@@ -1,0 +1,9 @@
+:host {
+  display: flex;
+  flex:1;
+  flex-direction: row;
+
+  .business-panel {
+    flex:1;
+  }
+}

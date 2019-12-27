@@ -1,0 +1,13 @@
+.map-container {
+  display: flex;
+  flex: 1;
+  #map {
+    height: 800px;
+    width: 80%;
+  }
+  .business-list {
+    background-color: gray;
+    overflow: hidden;
+    flex:1;
+  }
+}

@@ -1,0 +1,19 @@
+<div class="map-container">
+  <div #mapContainer id="map"></div>
+  <div class="business-list">
+    <mat-accordion>
+      <app-business-display-item *ngFor="let business of currentBusinesses; index as i"
+                                 [id]="business.id"
+                                 [name]="business.name"
+                                 [placeResult]="business.placeResult"
+                                 [listIndex]="i"
+
+      >
+      </app-business-display-item>
+
+    </mat-accordion>
+  </div>
+  </div>
+<pre>
+      {{currentBusinesses | json}}
+    </pre>
