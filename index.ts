@@ -7,7 +7,7 @@ import * as path from 'path';
 import * as favicon from 'serve-favicon';
 import * as cors from 'cors';
 
-import { userRoutes } from '@app/controllers';
+import { userRoutes, mapRoutes } from '@app/controllers';
 
 
 export class Index {
@@ -68,5 +68,7 @@ export class Index {
    */
   private routes(): void {
     this.app.use('/user', userRoutes);
+    this.app.use('/map', mapRoutes);
+    
   }
 }

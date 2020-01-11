@@ -6,7 +6,7 @@
   "scripts": {
     "install:all": "npm install && cd ./public/app && npm install",
     "ng:start": "cd ./public/app && tsc && npm start",
-    "node:start": "tsc-watch --onSuccess 'nodemon --exec babel-node ./bin/www'",
+    "node:start": "tsc-watch --onSuccess nodemon && babel-node ./bin/www",
     "start": "concurrently \"npm run node:start\"  \"npm run ng:start\""
   },
   "repository": {
@@ -37,7 +37,8 @@
     "express": "^4.17.1",
     "morgan": "^1.9.1",
     "serve-favicon": "~2.4.2",
-    "ts-node": "^6.0.0"
+    "ts-node": "^6.0.0",
+    "@types/googlemaps": "^3.39.1"
   },
   "devDependencies": {
     "@angular/cli": "^8.1.3",
