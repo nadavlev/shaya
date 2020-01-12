@@ -6,4 +6,7 @@ import { Injectable } from '@angular/core';
 export class MapDataService {
 
   constructor() { }
+  public getBusinessData(businesses: Business[]) {
+    console.table(businesses);
+  }
 }
