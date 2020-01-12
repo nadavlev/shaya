@@ -19,8 +19,12 @@ export class MapViewComponent implements OnInit, AfterViewInit {
     position: this.coordinates,
     map: this.map,
   });
+
   public currentBusinesses: Business[] = [];
-  constructor(private router: Router, private mapDataService: MapDataService) {
+  constructor(
+      private router: Router,
+      private mapDataService: MapDataService
+  ) {
 
   }
 
@@ -37,10 +41,12 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         this.lat = pos.coords.latitude;
         this.lng = pos.coords.longitude;
         this.coordinates = new google.maps.LatLng(this.lat, this.lng);
+
         this.mapOptions = {
           center: this.coordinates,
           zoom: 15,
         };
+
         this.marker = new google.maps.Marker({
           position: this.coordinates,
           map: this.map,
@@ -49,15 +55,18 @@ export class MapViewComponent implements OnInit, AfterViewInit {
         this.map = new google.maps.Map(this.gmap.nativeElement,
           this.mapOptions);
 
-        const request = {
-          location: this.coordinates,
-          radius: 2000,
-          types: ['cafe'],
-          fields: ['name', 'place_id']
-        };
-        const service = new google.maps.places.PlacesService(this.map);
-        service.nearbySearch(request, this.callback.bind(this));
+        // const request = {
+        //   location: this.coordinates,
+        //   radius: 2000,
+        //   types: ['cafe']
+        // };
+        //  const service = new google.maps.places.PlacesService(this.map);
+        //  service.nearbySearch(request, this.callback.bind(this));
         this.marker.setMap(this.map);
+
+        this.mapDataService.getPlaceData(this.coordinates, ['cafe']).subscribe((data) => {
+          console.log(`Got data :-) ${data}`);
+        });
       });
     }
   }
@@ -71,7 +80,6 @@ export class MapViewComponent implements OnInit, AfterViewInit {
           id: place.place_id
        };
       });
-      this.mapDataService.getBusinessData(this.currentBusinesses);
       for (const place of res) {
         this.createMarker(place);
       }

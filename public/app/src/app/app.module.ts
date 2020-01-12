@@ -10,6 +10,7 @@ import {MatCardModule} from "@angular/material/card";
 import { BusinessDisplayItemComponent } from './business-display-item/business-display-item.component';
 import {MatExpansionModule} from "@angular/material/expansion";
 import {MatIconModule} from "@angular/material/icon";
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {MatIconModule} from "@angular/material/icon";
     BrowserAnimationsModule,
     MatCardModule,
     MatExpansionModule,
-    MatIconModule
+    MatIconModule, 
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
